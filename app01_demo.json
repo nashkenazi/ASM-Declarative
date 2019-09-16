@@ -1,0 +1,56 @@
+{
+  "policy": {
+       "name":"AppPolicy01",
+       "description":"AppV1.1 - ASPIRE DEMO FOR DECLARATIVE AND WEBHOOKS CAPABILITIES",
+       "template":{  
+          "name":"POLICY_TEMPLATE_RAPID_DEPLOYMENT"
+       }, 
+       "enforcementMode":"blocking",
+       "server-technologies":[  
+          {  
+             "serverTechnologyName":"MySQL"
+          }
+       ],
+       "signature-settings":{
+           "signatureStaging": false 
+       },
+      "blocking-settings": {
+          "violations": [
+              {
+                "name": "VIOL_FILETYPE",
+                "alarm": true,
+                "block": true,
+                "learn": true
+              }
+            ]
+      },
+      "webhooks": [ 
+        {
+            "body": "payload={\"channel\": \"#cicd-security-updates\", \"username\": \"Adv.WAF Device\", \"text\": \"POLICY WAS APPLIED:\n DEVICE NAME: [{{device.hostname}}], POLICY NAME: [{{policy.name}}], ENFORCEMENT MODE: [{{policy.enforcementMode}}], DEVICE VERSION: [{{device.version}}]\"}",
+            "contentType": "application/x-www-form-urlencoded",
+            "triggerEvent": "apply-policy",
+            "url": "https://hooks.slack.com/services/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",
+	    	"name": "Slack-Apply-Policy"
+        },
+        {
+            "body": "payload={\"channel\": \"#cicd-security-updates\", \"username\": \"Adv.WAF Device\", \"text\": \"MALICIOUS REQUEST EVENT:\nDEVICE NAME: [{{device.hostname}}], POLICY NAME: [{{policy.name}}], \nCLIENT IP: [{{request.clientIp}}], METHOD: [{{request.method}}], URL: [{{request.url}}], APP HOSTNAME: {{request.host}}, ENFORCEMENT: [{{request.enforcementAction}}], VIOLATION RATING: [{{request.rating}}], EVENT ID: [{{request.id}}]\"}",
+            "contentType": "application/x-www-form-urlencoded",
+            "triggerEvent": "http-request-likely-malicious",
+            "url": "https://hooks.slack.com/services/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",
+            "name": "Slack-Malicious-Request"
+            }
+     ]},
+  "modifications": [
+            {
+                "entityChanges": {
+                    "type": "explicit"
+                },
+                "entity": {
+                    "name": "log"
+                },
+                "entityKind": "tm:asm:policies:filetypes:filetypestate",
+                "action": "delete",
+                "description": "Delete Disallowed File Type"
+            }
+    ]
+}
