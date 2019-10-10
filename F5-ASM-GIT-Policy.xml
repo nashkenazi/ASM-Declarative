@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <policy integrity_check="8442010c75acfdd2558aa9810ee3f493" bigip_version="13.1.0" name="/Common/F5-ASM-GIT-Policy">
-  <type>Security</type>
+  <type>Parent</type>
+  <new field>
   <policy_version>
-    <timestamp>2018-05-22T11:16:03Z</timestamp>
-    <device_name>asm11.plab.f5.com</device_name>
-    <policy_name>/Common/F5-ASM-GIT-Policy</policy_name>
+    <device_name>asm13.omlab.f5net.com</device_name>
+    <policy_name>/Common/PolicyName</policy_name>
     <last_change> Security Policy /Common/F5-ASM-GIT-Policy [add]: Type was set to Security.
 Encoding Selected was set to true.
 Application Language was set to utf-8.
 Case Sensitivity was set to Case Sensitive.
 Security Policy Description was set to Rapid Deployment Policy.
 Template was set to POLICY_TEMPLATE_RAPID_DEPLOYMENT.
-Active was set to false.
 Differentiate between HTTP and HTTPS URLs was set to Protocol Specific.
 Policy Name was set to /Common/F5-ASM-GIT-Policy.
 Enforcement Mode was set to Transparent. { audit: policy = /Common/F5-ASM-GIT-Policy, username = admin, client IP = 192.168.188.33 }</last_change>
@@ -23,7 +22,7 @@ Enforcement Mode was set to Transparent. { audit: policy = /Common/F5-ASM-GIT-Po
   <protocol_free>false</protocol_free>
   <general>
     <path_parameter_handling>as parameters</path_parameter_handling>
-    <mask_sensitive>true</mask_sensitive>
+    <mask_sensitive>false</mask_sensitive>
     <trigger_asm_irule_event>Disabled</trigger_asm_irule_event>
     <staging_period_in_days>7</staging_period_in_days>
     <enable_correlation>true</enable_correlation>
