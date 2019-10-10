@@ -1,14 +1,16 @@
 {
   "policy": {
-       "name":"AppPolicy01",
+       "name":"AppPolicy03",
        "description":"AppV1.1 - ASPIRE DEMO FOR DECLARATIVE AND WEBHOOKS CAPABILITIES",
        "template":{  
           "name":"POLICY_TEMPLATE_RAPID_DEPLOYMENT"
        }, 
-       "enforcementMode":"blocking",
+	  
+       "enforcementMode":"transparent",
        "server-technologies":[  
           {  
-             "serverTechnologyName":"MySQL"
+             "serverTechnologyName":"MySQL",
+	     "serverTechnologhyName": "PHP"
           }
        ],
        "signature-settings":{
